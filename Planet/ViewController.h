@@ -1,15 +1,19 @@
 //
 //  ViewController.h
-//  Planet
+//  BlurMenu
 //
-//  Created by Baya Walid on 10/04/2015.
-//
+//  Created by Ali Yılmaz on 05/02/14.
+//  Copyright (c) 2014 Ali Yılmaz. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import <foundation/Foundation.h>
+#import "BlurMenu.h"
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController <BlurMenuDelegate>
+{
+    NSString *bg;
+}
+@property (strong,nonatomic)UIViewController *viewController;
 
 @end
-

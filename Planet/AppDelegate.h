@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  Planet
+//  BlurMenu
 //
-//  Created by Baya Walid on 10/04/2015.
-//
+//  Created by Ali Yılmaz on 05/02/14.
+//  Copyright (c) 2014 Ali Yılmaz. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,6 +12,4 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-
 @end
-
