@@ -1,10 +1,4 @@
-//
-//  GLView.h
-//  Part5Project
-//
-//  Created by jeff on 5/4/09.
-//  Copyright Jeff LaMarche 2009. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import <OpenGLES/EAGL.h>

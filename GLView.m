@@ -1,10 +1,4 @@
-//
-//  GLView.m
-//  Part5Project
-//
-//  Created by jeff on 5/4/09.
-//  Copyright Jeff LaMarche 2009. All rights reserved.
-//
+
 
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
@@ -182,20 +176,10 @@
 	GLenum err = glGetError();
 	if(err)
 		NSLog(@"%x error", err);
+    
 }
 
 // Stop animating and release resources when they are no longer needed.
-- (void)dealloc
-{
-	[self stopAnimation];
-	
-	if([EAGLContext currentContext] == context)
-	{
-		[EAGLContext setCurrentContext:nil];
-	}
-	
-	context = nil;
-	
-}
+
 
 @end

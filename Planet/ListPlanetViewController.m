@@ -13,19 +13,18 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]];
     
     self.myArray =[[NSMutableArray alloc]init];
-    [self.myArray addObject:@"Soleil"];
-    [self.myArray addObject:@"Mercure"];
+    [self.myArray addObject:@"Sun"];
+    [self.myArray addObject:@"Mercury"];
     [self.myArray addObject:@"Venus"];
-    [self.myArray addObject:@"Terre"];
+    [self.myArray addObject:@"Earth"];
     [self.myArray addObject:@"Mars"];
     [self.myArray addObject:@"Jupiter"];
-    [self.myArray addObject:@"Saturne"];
+    [self.myArray addObject:@"Saturn"];
     [self.myArray addObject:@"Uranus"];
     [self.myArray addObject:@"Neptune"];
-    [self.myArray addObject:@"Pluton"];
+    [self.myArray addObject:@"Pluto"];
     
     self.imgArray =[[NSMutableArray alloc]init];
     [self.imgArray addObject:@"soleil.png"];
@@ -39,7 +38,7 @@
     [self.imgArray addObject:@"neptune.png"];
     [self.imgArray addObject:@"pluton.png"];
     
-    // Do any additional setup after loading the view, typically from a nib.
+  
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

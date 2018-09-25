@@ -2,8 +2,6 @@
 // Part5Projectconstants.h
 //  Part5Project
 //
-//  Created by jeff on 5/4/09.
-//  Copyright Jeff LaMarche 2009. All rights reserved.
 //
 
 // How many times a second to refresh the screen

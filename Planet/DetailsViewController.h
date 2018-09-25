@@ -2,8 +2,6 @@
 //  DetailsViewController.h
 //  ARSSReader
 //
-//  Created by Marin Todorov on 5/25/10.
-//  Copyright 2010 Marin Todorov. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,12 +10,7 @@
 @interface DetailsViewController : UIViewController <UIWebViewDelegate> {
 	NSDictionary* item;
 
-    
-    NSString * txtTitle;
-    NSString * txtUrlImage;
-    NSString * txtpubDate;
-    NSString * txtDescription;
-    
+  
     
     IBOutlet UILabel *lbl_title;
     
@@ -27,7 +20,7 @@
 	IBOutlet UIActivityIndicatorView* loader;
 }
 
-@property (nonatomic,weak) NSString* txtTitle;
+@property (nonatomic,strong) NSString* txtTitle;
 @property (nonatomic,weak) NSString* txtUrlImage;
 @property (nonatomic,weak) NSString* txtpubDate;
 @property (nonatomic,weak) NSString* txtDescription;

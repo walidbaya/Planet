@@ -2,12 +2,11 @@
 //  RSSLoader.h
 //  ARSSReader
 //
-//  Created by Marin Todorov on 5/25/10.
-//  Copyright 2010 Marin Todorov. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "GDataXMLNode.h"
+#import <UIKit/UIKit.h>
 #define kRSSUrl @"http://www.nasa.gov/rss/dyn/image_of_the_day.rss"
 
 @protocol RSSLoaderDelegate

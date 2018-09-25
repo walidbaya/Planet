@@ -1,10 +1,4 @@
-//
-//  GLViewController.h
-//  Part5Project
-//
-//  Created by jeff on 5/4/09.
-//  Copyright Jeff LaMarche 2009. All rights reserved.
-//
+
 
 
 #import <UIKit/UIKit.h>
@@ -18,7 +12,7 @@
     Vertex3D    *sphereTriangleStripVertices;
     Vector3D    *sphereTriangleStripNormals;
     GLuint      sphereTriangleStripVertexCount;
-    
+    UILabel     *txtlabel;
     Vertex3D    *sphereTriangleFanVertices;
     Vector3D    *sphereTriangleFanNormals;
     GLuint      sphereTriangleFanVertexCount;

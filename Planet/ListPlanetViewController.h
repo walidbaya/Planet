@@ -15,13 +15,13 @@
 {
     UITableView *TableView;
     ViewController *vc;
-    
+        
 }
 
 - (IBAction)Home:(UIBarButtonItem *)sender;
 
 @property (strong,nonatomic)UIViewController *viewController;
-@property (strong,nonatomic)UIView *view;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 

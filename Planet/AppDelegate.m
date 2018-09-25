@@ -2,9 +2,6 @@
 //  AppDelegate.m
 //  BlurMenu
 //
-//  Created by Ali Yılmaz on 05/02/14.
-//  Copyright (c) 2014 Ali Yılmaz. All rights reserved.
-//
 
 #import "AppDelegate.h"
 
@@ -12,10 +9,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    UIStoryboard *storyboard ;
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    
+         if (screenSize.height == 667){
+            storyboard = [UIStoryboard storyboardWithName:@"iPhone6" bundle:nil];//iPhone 4.7inch
+        } else
+            if (screenSize.height == 736){
+                storyboard = [UIStoryboard storyboardWithName:@"iPhone6plus" bundle:nil];//iPhone 5.5inch
+            } else
+                if (screenSize.height == 480){
+                    storyboard = [UIStoryboard storyboardWithName:@"iPhone4s" bundle:nil];//iPhone 3.5inch
+                } else
+                    {
+                        storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];//iPhone 4inch
+                    }
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Home"];
+    [self.window makeKeyAndVisible];
+    
     return YES;
+    
 }
-							
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

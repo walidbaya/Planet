@@ -35,34 +35,34 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]];
 
    
-    self.soleiltxt=@"Le soleil est une étoile. C’est aussi la seule étoile de notre système solaire. Toutes les planètes du système solaire tournent autour du Soleil. Le Soleil a pour mission de briller et d’émettre de l’énergie, afin de maintenir une cohérence entre toutes les planètes qui gravitent autour de lui. Il met 365 jours à parcourir le zodiaque et 30 jours un signe (un signe fait 30 degrés). Il avance d’un degré par jour environ.Distance à la terre : 150 millions de km.Masse 334 000 fois de la terre.Température au centre du soleil : 15 millions de degrés.";
+    self.soleiltxt=@"The sun is a star. It is also the only star of our solar system. All the planets of the solar system revolve around the sun. The Sun's mission is to shine and emit energy in order to maintain consistency between all the planets that revolve around it. It offers 365 days traveling the zodiac sign and 30 days (a sign is 30 degrees). He advances one degree per day environ.Distance earth: 150 million km.Masse 334,000 times the sun at terre.Temperature center: 15 million degrees.";
    
-    self.mercuretxt=@"Très proche du soleil on trouve Mercure qui accompagne toujours le Soleil dans sa course. La surface de Mercure est recouverte de cratères qui sont des impacts de météorites qui ont percuté la planète.";
+    self.mercuretxt=@"Very close to the sun we find Mercury that always accompanies the Sun in its course. Mercury's surface is covered with craters that are the impacts of meteorites that crashed into the planet.";
     
-    self.venustxt=@"Venus est la 2éme planètes du système solaire. La sonde Magellan révéla que la surface de venus est désert chaud comprenant des cratères, des volcans et des montagnes.";
+    self.venustxt=@"Venus is the 2nd solar system planets. The Magellan probe revealed that the surface is from hot desert including craters, volcanoes and mountains.";
     
-    self.terretxt=@"La Terre est la seule planète ou la vie est possible.  La vie sur terre  est apparue il y a 3 Milliards d’années .L’atmosphère de la terre permet de capter la chaleur et la lumière du soleil nécessaire au développement de la vie mais stoppe les rayons ultraviolets qui sont dangereux pour les êtres vivants. L’atmosphère contient de l’oxygène sans lequel nous ne pouvons respirer.";
+    self.terretxt=@"Earth is the only planet where life is possible. Life on Earth appeared there 3 Billion .L'atmosphère years from Earth captures heat and sunlight necessary for the development of life but stops ultraviolet rays that are harmful to living beings. The atmosphere contains oxygen without which we can not breathe.";
     
-    self.marstxt=@"A l’extérieur de l’orbite terrestre la première rencontre est Mars, la planète rouge, planète de l’action Mars est la 4ème planète du système solaire. C’est la dernière  planète tellurgique, les planètes suivantes sont des planètes gazeuses (sauf pluton) Mars se caractérise par sa couleur rouge qui est due à la présence d’oxyde de fer dans la poussière de sa surface.";
+    self.marstxt=@"Outside the Earth's orbit is the first encounter Mars, the red planet, planet of action Mars is the fourth planet in the solar system. This is the last planet tellurgique, the following planets are gas planets (except Pluto) March is characterized by its red color is due to the presence of iron oxide in the dust from its surface.";
     
-    self.jupitertxt=@"Jupiter est la première planète lente, la plus grosse du système solaire, 12fois supérieur à la Terre. Entourée de quelques dizaines de satellites, elle produit sa propre énergie.";
+    self.jupitertxt=@"Jupiter is the first planet slow, the largest of the solar system, 12fois above the Earth. Surrounded by dozens of satellites, it produces its own energy.";
     
-    self.saturnetxt=@"Presque aussi volumineuse que Jupiter. Saturne est reconnaissable à son anneau formé pour l’essentiel de poussières et de blocs de glace. Malgré sa taille Saturne est si légère qu’elle pourrait flotter sur l’eau. Saturne est la 6eme planète du système solaire, c’est une planète géante gazeuse.";
+    self.saturnetxt=@"Almost as large as Jupiter. Saturn is known by his ring formed mostly of dust and ice. Despite its size Saturn is so light it could float on water. Saturn is the 6th planet from the Sun is a gas giant planet.";
     
-    self.uranustxt=@"Uranus fut découvert par le musicien William Herschel en 1781. La planète se compose de 3 couches : un noyau fait de roches fondues, une couche faite de glace, d’ammoniaque et de méthane solide et une couche constituée d’hydrogène liquide. C’est la présence de méthane dans l’atmosphère qui donne à la planète sa couleur bleu-vert.";
+    self.uranustxt=@"Uranus was discovered by musician William Herschel in 1781. The planet consists of three layers: a core made of molten rock, a layer made of ice, ammonia and methane solid and consists of liquid hydrogen layer. It is the presence of methane in the atmosphere gives the planet its blue-green color.";
     
-    self.neptunetxt=@"Magnifique planète bleu. Neptune fut découverte en 1846. Elle a un noyau rocheux entouré par un océan de méthane, d’ammoniaque et d’eau. Sa couleur bleu est due à la présence de méthane dans l’atmosphère : le rouge est absorbé et le bleu diffusé.";
+    self.neptunetxt=@"Beautiful blue planet. Neptune was discovered in 1846. It has a rocky core surrounded by an ocean of methane, ammonia and water. Its blue color is due to the presence of methane in the atmosphere: the red is absorbed and scattered blue.";
     
-    self.plutontxt=@"(Depuis le 24 aout 2006, pluton n’est plus considéré comme une planète du système solaire). Pluton se trouve à quelque six milliard de kms du soleil. C’est la plus petite planète ; elle est plus petite que la lune.";
+    self.plutontxt=@"(Since 24 August 2006, Pluto is no longer considered a planet in the solar system). Pluto is about six billion kilometers from the sun. It is the smallest planet; it is smaller than the moon.";
     
     
     
     self.myLabel.text = self.str;
-    if([self.str isEqualToString:@"Soleil"]){
+    if([self.str isEqualToString:@"Sun"]){
         [img setImage :[UIImage  imageNamed:@"soleil"]];
         desc.text=self.soleiltxt;
     }
-    if([self.str isEqualToString:@"Mercure"]){
+    if([self.str isEqualToString:@"Mercury"]){
         [img setImage :[UIImage imageNamed:@"mercure"]];
           desc.text=self.mercuretxt;
         
@@ -72,7 +72,7 @@
           desc.text=self.venustxt;
         
     }
-    if([self.str isEqualToString:@"Terre"]){
+    if([self.str isEqualToString:@"Earth"]){
         [img setImage :[UIImage imageNamed:@"globe"]];
           desc.text=self.terretxt;
         
@@ -87,7 +87,7 @@
                   desc.text=self.jupitertxt;
         
     }
-    if([self.str isEqualToString:@"Saturne"]){
+    if([self.str isEqualToString:@"Saturn"]){
         [img setImage :[UIImage imageNamed:@"saturne"]];
                   desc.text=self.saturnetxt;
         
@@ -102,7 +102,7 @@
                   desc.text=self.neptunetxt;
         
     }
-    if([self.str isEqualToString:@"Pluton"]){
+    if([self.str isEqualToString:@"Pluto"]){
         [img setImage :[UIImage imageNamed:@"pluton"]];
                   desc.text=self.plutontxt;
         

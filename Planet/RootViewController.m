@@ -2,11 +2,10 @@
 //  RootViewController.m
 //  ARSSReader
 //
-//  Created by Marin Todorov on 5/25/10.
-//  Copyright Marin Todorov 2010. All rights reserved.
 //
 
 #import "RootViewController.h"
+#import "UIImageView+WebCache.h"
 
 
 @implementation RootViewController
@@ -76,20 +75,26 @@
 	
     //cell.textLabel.text = [item objectForKey:@"title"];
    
-    NSURL *url = [NSURL URLWithString:  [item objectForKey:@"enclosure"]];
-    NSData * data= [[NSData alloc] initWithContentsOfURL:url];
+   // NSURL *url = [NSURL URLWithString:  [item objectForKey:@"enclosure"]];
+    //NSData * data= [[NSData alloc] initWithContentsOfURL:url];
     CGSize itemSize = CGSizeMake(60, 60);
     UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
     CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
     [cell.imageView.image drawInRect:imageRect];
-    UIImage * tmpImage = [[UIImage alloc]initWithData:data];
+    
+    
+    
+    //UIImage * tmpImage = [[UIImage alloc]initWithData:data];
    // cell.imageView.image=tmpImage;
     
     
     UILabel *lbltitle = (UILabel *)[cell.contentView viewWithTag:1];
     lbltitle.text = [item objectForKey:@"title"];
     UIImageView *lbImg = (UIImageView *)[cell.contentView viewWithTag:3];
-    lbImg.image =tmpImage;
+    //lbImg.image =tmpImage;
+    [lbImg sd_setImageWithURL:[NSURL URLWithString:  [item objectForKey:@"enclosure"]]
+                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+
     UILabel *lbldate = (UILabel *)[cell.contentView viewWithTag:2];
     lbldate.text = [item objectForKey:@"pubDate"];
     return cell;
@@ -127,23 +132,12 @@
 }
 
 
-- (void)dealloc {
-    [rssItems release];
-    rssItems = nil;
-    
-    [rss release];
-    rss = nil;
-    
-    [self.tabView release];
-    
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark RSSLoaderDelegate
 -(void)updatedFeedWithRSS:(NSMutableArray*)items
 {
-	rssItems = [items retain];
+	rssItems = items ;
 	[self.tabView reloadData];
 }
 

@@ -2,8 +2,6 @@
 //  RootViewController.h
 //  ARSSReader
 //
-//  Created by Marin Todorov on 5/25/10.
-//  Copyright Marin Todorov 2010. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -15,7 +13,6 @@
 
 UIViewController <UITableViewDelegate , UITableViewDataSource, RSSLoaderDelegate>
 {
-    UITableView *tabView;
 	RSSLoader* rss;
 	NSMutableArray* rssItems;
 }

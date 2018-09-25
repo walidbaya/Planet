@@ -1,27 +1,4 @@
-//
-//  GLViewController.h
-//  Part5Project
-//
-//  Created by jeff on 5/4/09.
-//  Copyright Jeff LaMarche 2009. All rights reserved.
-//
 
-/*
- 
- Modified for iOS 5 & iPad by Steven Troughton-Smith in May 2012
- Added texturing and input (rotate, pinch to zoom, tap to change texture)
- 
- I freely admit I know nothing about OpenGL|ES but since I couldn't find
- something that did this when I started, maybe this will be of use to someone
- 
- I use massive textures (4096x2048) so you might want to reduce those if
- trying this on an older device
- 
- The Earth map was taken from NASA at http://visibleearth.nasa.gov/view.php?id=74518
- 
- Mars from http://solarviews.com/cap/mars/marscyl1.htm
- 
- */
 
 #import "GLViewController.h"
 #import "GLView.h"
@@ -134,15 +111,21 @@ void getSolidSphere(Vertex3D **triangleStripVertexHandle,   // Will hold vertice
     *triangleStripVertexHandle = triangleStripVertices;
     *triangleStripNormalHandle = triangleStripNormals;
 }
-
+GLuint currentTexture;
 GLuint earthTexture;
 GLuint marsTexture;
 GLuint mercureTexture;
 GLuint jupiterTexture;
-GLuint currentTexture;
+GLuint neptuneTexture;
+GLuint plutonTexture;
+GLuint saturneTexture;
+GLuint soleilTexture;
+GLuint uranusTexture;
+GLuint venusTexture;
+GLuint moonTexture;
 
 static GLfloat rotX = 0.0;
-static GLfloat rotVelX = 0.0;
+static GLfloat rotVelX = 1.0;
 
 static GLfloat rotY = 0.0;
 static GLfloat rotVelY = 0.0;
@@ -156,7 +139,7 @@ static GLfloat basePinchScale = -4.0;
 {
 	
     glLoadIdentity();
-	
+   
 	
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) // zoom the scene out a little
 		basePinchScale = -4.0;
@@ -165,12 +148,14 @@ static GLfloat basePinchScale = -4.0;
 	
 	glTranslatef(0.0f,0.0f,basePinchScale+pinchScale);
 	
-	//	glRotatef(rotY,1.0f, 0.0f,0.0f);
+    glRotatef(rotY,1.0f, 0.0f,0.0f);
 	glRotatef(rotX,0.0f, 1.0f,0.0f);
-	
-    glClearColor(0.15, 0.15, 0.15, 1.0);
+    
+  
+    glClearColor(0.5, 0.5, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+   
+    
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -204,12 +189,11 @@ static GLfloat basePinchScale = -4.0;
 		 
 		 */
 		
-		if (rotVelX > 0.1)
-			rotVelX-=0.1;
-		else if (rotVelX < -0.1)
-			rotVelX+=0.1;
-		else
-			rotVelX = 0;
+		if (rotVelX > 0.4)
+			rotVelX-=0.4;
+		else if (rotVelX < -0.4)
+			rotVelX+=0.4;
+		
 		
 		if (rotVelY > 0.1)
 			rotVelY-=0.1;
@@ -222,6 +206,7 @@ static GLfloat basePinchScale = -4.0;
     }
     lastDrawTime = [NSDate timeIntervalSinceReferenceDate];
 }
+
 
 
 -(void)loadTexture:(NSString *)resource forID:(GLuint *)tex
@@ -252,10 +237,12 @@ static GLfloat basePinchScale = -4.0;
     CGContextTranslateCTM (context, 0, height);
     CGContextScaleCTM (context, 1.0, -1.0);
     
+   
     CGColorSpaceRelease( colorSpace );
     CGContextClearRect( context, CGRectMake( 0, 0, width, height ) );
     CGContextDrawImage( context, CGRectMake( 0, 0, width, height ), image.CGImage );
-	
+	 
+    
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
 	
     CGContextRelease(context);
@@ -264,23 +251,215 @@ static GLfloat basePinchScale = -4.0;
 	
 }
 
+
+
+-(void)next{
+    if (currentTexture == earthTexture)
+    {
+        currentTexture = marsTexture;
+        NSLog(@"mars");
+        [txtlabel setText:@"Mars"];
+    }
+    else if (currentTexture == marsTexture)
+    {
+        currentTexture = jupiterTexture;
+        NSLog(@"jupiter");
+        [txtlabel setText:@"Jupiter"];
+    }
+    else if (currentTexture == jupiterTexture)
+    {
+        currentTexture = mercureTexture;
+        NSLog(@"mercure");
+        [txtlabel setText:@"Mercure"];
+    }
+    else if (currentTexture == mercureTexture)
+    {
+        currentTexture = neptuneTexture;
+        NSLog(@"neptune");
+        [txtlabel setText:@"Neptune"];
+    }
+    else if (currentTexture == neptuneTexture)
+    {
+        currentTexture = uranusTexture;
+        NSLog(@"uranus");
+        [txtlabel setText:@"Uranus"];
+    }
+    else if (currentTexture == uranusTexture)
+    {
+        currentTexture = venusTexture;
+        NSLog(@"venus");
+        [txtlabel setText:@"Venus"];
+    }
+    else if (currentTexture == venusTexture)
+    {
+        currentTexture = saturneTexture;
+        NSLog(@"saturne");
+        [txtlabel setText:@"Saturne"];
+    }
+    else if (currentTexture == saturneTexture)
+    {
+        currentTexture = plutonTexture;
+        NSLog(@"pluton");
+        [txtlabel setText:@"Pluton"];
+    }
+    else if (currentTexture == plutonTexture)
+    {
+        currentTexture = soleilTexture;
+        NSLog(@"sun");
+        [txtlabel setText:@"Sun"];
+    }
+    else if (currentTexture == soleilTexture)
+    {
+        currentTexture = moonTexture;
+        NSLog(@"moon");
+        [txtlabel setText:@"Moon"];
+    }
+    else
+    {
+        currentTexture = earthTexture;
+        NSLog(@"earth");
+        [txtlabel setText:@"Earth"];
+    }
+    
+}
+
+-(void)back{
+    if (currentTexture == earthTexture)
+    {
+        currentTexture = moonTexture;
+        NSLog(@"moon");
+        [txtlabel setText:@"Moon"];
+    }
+    else if (currentTexture == moonTexture)
+    {
+        currentTexture = soleilTexture;
+        NSLog(@"sun");
+        [txtlabel setText:@"Sun"];
+    }
+    else if (currentTexture == soleilTexture)
+    {
+        currentTexture = plutonTexture;
+        NSLog(@"pluton");
+        [txtlabel setText:@"Pluton"];
+    }
+    else if (currentTexture == plutonTexture)
+    {
+        currentTexture = saturneTexture;
+        NSLog(@"saturne");
+        [txtlabel setText:@"Saturne"];
+    }
+    else if (currentTexture == saturneTexture)
+    {
+        currentTexture = venusTexture;
+        NSLog(@"venus");
+        [txtlabel setText:@"Venus"];
+    }
+    else if (currentTexture == venusTexture)
+    {
+        currentTexture = uranusTexture;
+        NSLog(@"uranus");
+        [txtlabel setText:@"Uranus"];
+    }
+    else if (currentTexture == uranusTexture)
+    {
+        currentTexture = neptuneTexture;
+        NSLog(@"neptune");
+        [txtlabel setText:@"Neptune"];
+    }
+    else if (currentTexture == neptuneTexture)
+    {
+        currentTexture = mercureTexture;
+        NSLog(@"mercure");
+        [txtlabel setText:@"Mercure"];
+    }
+    else if (currentTexture == mercureTexture)
+    {
+        currentTexture = jupiterTexture;
+        NSLog(@"jupiter");
+        [txtlabel setText:@"Jupiter"];
+    }
+    else if (currentTexture == jupiterTexture)
+    {
+        currentTexture = marsTexture;
+        NSLog(@"mars");
+        [txtlabel setText:@"Mars"];
+    }
+    else
+    {
+        currentTexture = earthTexture;
+        NSLog(@"earth");
+        [txtlabel setText:@"Earth"];
+    }
+    
+}
+
 -(void)tapped
 {
 	if (currentTexture == earthTexture)
 	{
 		currentTexture = marsTexture;
+        NSLog(@"mars");
+        [txtlabel setText:@"Mars"];
     }
     else if (currentTexture == marsTexture)
     {
         currentTexture = jupiterTexture;
+        NSLog(@"jupiter");
+        [txtlabel setText:@"Jupiter"];
     }
     else if (currentTexture == jupiterTexture)
     {
         currentTexture = mercureTexture;
+        NSLog(@"mercure");
+        [txtlabel setText:@"Mercure"];
+    }
+    else if (currentTexture == mercureTexture)
+    {
+        currentTexture = neptuneTexture;
+        NSLog(@"neptune");
+        [txtlabel setText:@"Neptune"];
+    }
+    else if (currentTexture == neptuneTexture)
+    {
+        currentTexture = uranusTexture;
+        NSLog(@"uranus");
+        [txtlabel setText:@"Uranus"];
+    }
+    else if (currentTexture == uranusTexture)
+    {
+        currentTexture = venusTexture;
+        NSLog(@"venus");
+        [txtlabel setText:@"Venus"];
+    }
+    else if (currentTexture == venusTexture)
+    {
+        currentTexture = saturneTexture;
+        NSLog(@"saturne");
+        [txtlabel setText:@"Saturne"];
+    }
+    else if (currentTexture == saturneTexture)
+    {
+        currentTexture = plutonTexture;
+        NSLog(@"pluton");
+        [txtlabel setText:@"Pluton"];
+    }
+    else if (currentTexture == plutonTexture)
+    {
+        currentTexture = soleilTexture;
+        NSLog(@"sun");
+        [txtlabel setText:@"Sun"];
+    }
+    else if (currentTexture == soleilTexture)
+    {
+        currentTexture = moonTexture;
+        NSLog(@"moon");
+        [txtlabel setText:@"Moon"];
     }
 	else
 	{
 		currentTexture = earthTexture;
+        NSLog(@"earth");
+        [txtlabel setText:@"Earth"];
 	}
 	
 }
@@ -291,38 +470,102 @@ static GLfloat basePinchScale = -4.0;
 	rotVelX = ([p velocityInView:self.view].x/180);
 	
 	// two-axis rotation is a little bit more complicated than just this
-	//	rotVelY = ([p velocityInView:self.view].y/180);
+		rotVelY = ([p velocityInView:self.view].y/180);
 	
 }
 
 -(void)pinch:(UIPinchGestureRecognizer *)p
 {
 	
-	if (pinchScale + p.velocity/10. < 1.95)
+	if (pinchScale + p.velocity/5. < 1.95)
 	{
-		pinchScale += p.velocity/10.;
+		pinchScale += p.velocity/5.;
 	}
 }
 
 -(void)setupView:(GLView*)view
 {
 	
-	[self loadTexture:@"earth" forID:&earthTexture];
-	[self loadTexture:@"mars" forID:&marsTexture];
-    [self loadTexture:@"mercuremap.png" forID:&mercureTexture];
-    [self loadTexture:@"jupitemap.png" forID:&jupiterTexture];
+	[self loadTexture:@"terremap" forID:&earthTexture];
+	[self loadTexture:@"marsmap" forID:&marsTexture];
+    [self loadTexture:@"mercuremap" forID:&mercureTexture];
+    [self loadTexture:@"jupitermap" forID:&jupiterTexture];
+    [self loadTexture:@"saturnmap" forID:&saturneTexture];
+    [self loadTexture:@"venusmap" forID:&venusTexture];
+    [self loadTexture:@"neptunemap" forID:&neptuneTexture];
+    [self loadTexture:@"soleilmap" forID:&soleilTexture];
+    [self loadTexture:@"plutonmap" forID:&plutonTexture];
+    [self loadTexture:@"uranusmap" forID:&uranusTexture];
+    [self loadTexture:@"moonmap" forID:&moonTexture];
 
-	
+	CGSize screenSize = [[UIScreen mainScreen] bounds].size;
 	currentTexture = earthTexture;
 	
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+    txtlabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 70.0, 90.0, 80.0)];
+    [txtlabel setText:@"Earth"];
+    [txtlabel setTextColor:[UIColor redColor]];
+    [txtlabel setBackgroundColor:[UIColor clearColor]];
+    [txtlabel setFont:[UIFont fontWithName: @"GillSans-Light" size: 24.0f]];
+    [view addSubview:txtlabel];
+    
+    
+	//UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];	
 	UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
-	
-	[self.view addGestureRecognizer:tap];
+    //[self.view addGestureRecognizer:tap];
 	[self.view addGestureRecognizer:pan];
 	[self.view addGestureRecognizer:pinch];
 	
+    
+    
+    UIImage *nextimg = [UIImage imageNamed:@"next.png"];
+    UIButton *btnext = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnext addTarget:self action:@selector(next)
+    forControlEvents:UIControlEventTouchUpInside];
+    [btnext sizeToFit];
+    [btnext setBackgroundImage:nextimg forState:UIControlStateNormal];
+    //[btnext setTitle:@"Next" forState:UIControlStateNormal];
+    btnext.frame = CGRectMake(250.0, 470.0, 60.0, 60.0);
+    if (screenSize.height == 736){
+        btnext.frame = CGRectMake(340.0, 650.0, 60.0, 60.0);
+    }
+    if (screenSize.height == 667){
+        btnext.frame = CGRectMake(300.0, 580.0, 60.0, 60.0);
+    }
+    if (screenSize.height == 480){
+        btnext.frame = CGRectMake(250.0, 420.0, 60.0, 60.0);
+    }
+    if ([[UIDevice currentDevice] userInterfaceIdiom] ==UIUserInterfaceIdiomPad) {
+        btnext.frame = CGRectMake(600.0, 850.0, 50.0, 50.0);
+    }
+    [self.view addSubview:btnext];
+    
+    
+    
+    UIImage *backimg = [UIImage imageNamed:@"back.png"];
+    UIButton *btnback = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnback addTarget:self action:@selector(back)
+    forControlEvents:UIControlEventTouchUpInside];
+    [btnback sizeToFit];
+    [btnback setBackgroundImage:backimg forState:UIControlStateNormal];
+    //[btnback setTitle:@"Back" forState:UIControlStateNormal];
+    btnback.frame = CGRectMake(5.0, 470.0, 60.0, 60.0);
+    if (screenSize.height == 736){
+    btnback.frame = CGRectMake(5.0, 650.0, 60.0, 60.0);
+    }
+    if (screenSize.height == 667){
+        btnback.frame = CGRectMake(5.0, 580.0, 60.0, 60.0);
+    }
+    if (screenSize.height == 480){
+        btnback.frame = CGRectMake(5.0, 420.0, 60.0, 60.0);
+    }
+    if ([[UIDevice currentDevice] userInterfaceIdiom] ==UIUserInterfaceIdiomPad) {
+        btnback.frame = CGRectMake(5.0, 850.0, 50.0, 50.0);
+    }
+    [self.view addSubview:btnback];
+    
+    
+    
 	const GLfloat zNear = 0.01, zFar = 1000.0, fieldOfView = 45.0;
 	GLfloat size; 
 	glEnable(GL_DEPTH_TEST);
@@ -376,7 +619,7 @@ static GLfloat basePinchScale = -4.0;
     glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 25.0);
     
 	glLoadIdentity(); 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); 
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     
     getSolidSphere(&sphereTriangleStripVertices, &sphereTriangleStripNormals, &sphereTriangleStripVertexCount, 1.0, LAT, LONG);
 }
@@ -385,19 +628,6 @@ static GLfloat basePinchScale = -4.0;
     [super didReceiveMemoryWarning]; 
 }
 
-- (void)dealloc 
-{
-    if(sphereTriangleStripVertices)
-        free(sphereTriangleStripVertices);
-    if (sphereTriangleStripNormals)
-        free(sphereTriangleStripNormals);
-    
-    if (sphereTriangleFanVertices)
-        free(sphereTriangleFanVertices);
-    if (sphereTriangleFanNormals)
-        free(sphereTriangleFanNormals);
-    
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {

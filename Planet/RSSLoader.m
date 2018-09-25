@@ -2,8 +2,6 @@
 //  RSSLoader.m
 //  ARSSReader
 //
-//  Created by Marin Todorov on 5/25/10.
-//  Copyright 2010 Marin Todorov. All rights reserved.
 //
 
 #import "RSSLoader.h"
@@ -33,11 +31,6 @@
 	[self dispatchLoadingOperation];
 }
 
--(void)dealloc
-{
-	self.delegate = nil;
-	[super dealloc];
-}
 
 -(void)dispatchLoadingOperation
 {
@@ -48,8 +41,7 @@
 																			  object:nil];
 	
 	[queue addOperation:operation];
-	[operation release];
-	[queue autorelease];
+	
 }
 
 -(void)fetchRss
@@ -77,9 +69,6 @@
 	} else {
 		[self.delegate performSelectorOnMainThread:@selector(failedFeedUpdateWithError:) withObject:error waitUntilDone:YES];
 	}
-	
-    [doc autorelease];
-    [xmlData release];
 }
 
 -(NSDictionary*)getItemFromXmlElement:(GDataXMLElement*)xmlItem

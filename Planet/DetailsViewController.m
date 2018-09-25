@@ -2,8 +2,6 @@
 //  DetailsViewController.m
 //  ARSSReader
 //
-//  Created by Marin Todorov on 5/25/10.
-//  Copyright 2010 Marin Todorov. All rights reserved.
 //
 
 #import "DetailsViewController.h"
@@ -45,18 +43,6 @@ self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@
 - (void)viewDidUnload {
     [super viewDidUnload];
 }
-
-
-- (void)dealloc {
-	//very important, otherwise unfinished requests will cause exc_badaccess
-    [lbl_title release];
-    [lbl_title release];
-    [imgArticle release];
-    [lbl_datePub release];
-    [txt_desc release];
-    [super dealloc];
-}
-
 
 
 

@@ -2,8 +2,6 @@
 //  BlurMenuItemCell.m
 //  BlurMenu
 //
-//  Created by Ali Yılmaz on 06/02/14.
-//  Copyright (c) 2014 Ali Yılmaz. All rights reserved.
 //
 
 #import "BlurMenuItemCell.h"

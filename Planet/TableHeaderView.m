@@ -2,8 +2,6 @@
 //  TableHeaderView.m
 //  ARSSReader
 //
-//  Created by Marin Todorov on 6/2/10.
-//  Copyright 2010 Marin Todorov. All rights reserved.
 //
 
 #import "TableHeaderView.h"
@@ -25,7 +23,6 @@
 		label.text = text;
 		label.numberOfLines = 2;
 		[self addSubview:label];
-		[label release];
     }
     return self;
 }
@@ -42,10 +39,5 @@
     // Drawing code
 }
 */
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 
 @end
